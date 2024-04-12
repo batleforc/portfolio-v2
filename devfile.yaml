@@ -1,0 +1,50 @@
+schemaVersion: 2.2.0
+metadata:
+  name: portfolio
+  language: rust
+  version: 1.0.0
+
+projects:
+  - name: portfolio
+    git:
+      remotes:
+        origin: https://github.com/batleforc/portfolio-v2.git
+
+components:
+  - name: tools
+    container:
+      image: harbor.weebo.fr/batleforc/che-rust:latest
+      memoryLimit: 8Gi
+      command: ["tail"]
+      args: ["-f", "/dev/null"]
+      mountSources: true
+      endpoints:
+        - name: 5432-http
+          targetPort: 5432
+          exposure: public
+          protocol: https
+          secure: true
+      env:
+        - name: RUST_ENV
+          value: "dev-che"
+        - name: "PORT"
+          value: "5432"
+
+commands:
+  - id: build
+    exec:
+      component: tools
+      workingDir: ${PROJECT_SOURCE}
+      commandLine: cargo build
+      group:
+        kind: build
+        isDefault: true
+
+  - id: run
+    exec:
+      component: tools
+      workingDir: ${PROJECT_SOURCE}
+      commandLine: cargo run
+      group:
+        kind: run
+        isDefault: true
