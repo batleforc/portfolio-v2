@@ -1,5 +1,14 @@
 # Portfolio - V2Rust
 
+## Module
+
+This project is split into X module:
+
+- Front: That will include everything related to rendering the frontend app
+- Back: That will handle the backend part
+- Common : Who will handle the common package shared accross the app
+- Driven: Include everything that is driven like a database
+- Driving: Well most likely the part that will define the API and or the Actix Actor (well a WS in fact)
 
 ## Contributing
 

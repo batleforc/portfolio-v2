@@ -1,0 +1,9 @@
+[workspace]
+
+members = [
+    "front",
+    "back",
+    "common",  # Common model shared between the front and the back
+    "driving", # Part of the app that will drive like the Actix api or Actix actor
+    "driven",  # The driven part like a database, KV handler and possibly somme middle part for the actix actor
+]
