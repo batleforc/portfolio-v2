@@ -43,7 +43,7 @@ cog bump [ --patch | --minor | --major ]
 
 Doing it with the cli will:
 
-- Increment the past version depending on the choice made (path/minor/major)
+- Increment the past version depending on the choice made (patch/minor/major)
 - Change the version in Cargo.toml
 - Generate the changelog
 - Trigger the pipeline that will create a draft with possible package

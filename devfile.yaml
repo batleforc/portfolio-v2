@@ -14,13 +14,21 @@ components:
   - name: tools
     container:
       image: harbor.weebo.fr/batleforc/che-rust:latest
-      memoryLimit: 8Gi
-      command: ["tail"]
-      args: ["-f", "/dev/null"]
+      memoryLimit: 10Gi
       mountSources: true
       endpoints:
         - name: 5432-http
           targetPort: 5432
+          exposure: public
+          protocol: https
+          secure: true
+        - name: 3000-http
+          targetPort: 3000
+          exposure: public
+          protocol: https
+          secure: true
+        - name: 3001-http
+          targetPort: 3001
           exposure: public
           protocol: https
           secure: true
